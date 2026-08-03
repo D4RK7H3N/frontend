@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <style>
+    .roof { fill: var(--color-roof, #b45309); }
+    .wall { fill: var(--color-wall, #e2e8f0); }
+    .win { fill: var(--color-window, #93c5fd); }
+    .acc { fill: var(--color-accent, #1d4ed8); }
+    .bdr { stroke: var(--color-accent, #1d4ed8); stroke-linecap: round; stroke-linejoin: round; }
+    .rw { stroke: var(--color-wall, #e2e8f0); stroke-width: 2; }
+    .tw { stroke: #ffffff; stroke-width: 2.5; stroke-linecap: round; }
+  </style>
+
+  <!-- Left wing -->
+  <rect class="wall" x="18" y="78" width="54" height="90" rx="1"/>
+  <polygon class="roof" points="18,78 45,48 72,78"/>
+  <line class="tw" x1="28" y1="78" x2="62" y2="78"/>
+  
+  <!-- Center section -->
+  <rect class="wall" x="62" y="68" width="76" height="100" rx="1"/>
+  <polygon class="roof" points="62,68 100,20 138,68"/>
+  <line class="tw" x1="70" y1="68" x2="130" y2="68"/>
+
+  <!-- Right wing -->
+  <rect class="wall" x="128" y="78" width="54" height="90" rx="1"/>
+  <polygon class="roof" points="128,78 155,48 182,78"/>
+  <line class="tw" x1="138" y1="78" x2="172" y2="78"/>
+
+  <!-- Windows - left wing (3 columns, 2 panes each) -->
+  <rect class="win" x="28" y="96" width="8" height="16" rx="1"/>
+  <rect class="win" x="39" y="96" width="8" height="16" rx="1"/>
+  <rect class="win" x="50" y="96" width="8" height="16" rx="1"/>
+  <line class="bdr" x1="32" y1="96" x2="32" y2="112" stroke-width="1.5"/>
+  <line class="bdr" x1="43" y1="96" x2="43" y2="112" stroke-width="1.5"/>
+  <line class="bdr" x1="54" y1="96" x2="54" y2="112" stroke-width="1.5"/>
+
+  <!-- Windows - right wing (3 columns, 2 panes each) -->
+  <rect class="win" x="142" y="96" width="8" height="16" rx="1"/>
+  <rect class="win" x="153" y="96" width="8" height="16" rx="1"/>
+  <rect class="win" x="164" y="96" width="8" height="16" rx="1"/>
+  <line class="bdr" x1="146" y1="96" x2="146" y2="112" stroke-width="1.5"/>
+  <line class="bdr" x1="157" y1="96" x2="157" y2="112" stroke-width="1.5"/>
+  <line class="bdr" x1="168" y1="96" x2="168" y2="112" stroke-width="1.5"/>
+
+  <!-- Clock -->
+  <circle class="wall" cx="100" cy="90" r="14" stroke="var(--color-accent, #1d4ed8)" stroke-width="2.5"/>
+  <line class="bdr" x1="100" y1="90" x2="100" y2="81" stroke-width="3"/>
+  <line class="bdr" x1="100" y1="90" x2="109" y2="87" stroke-width="2"/>
+  <circle class="acc" cx="100" cy="90" r="2.5"/>
+
+  <!-- Awning above door -->
+  <polygon class="roof" points="78,144 100,134 122,144"/>
+
+  <!-- Double door -->
+  <rect class="acc" x="83" y="144" width="15" height="24" rx="1.5"/>
+  <rect class="acc" x="102" y="144" width="15" height="24" rx="1.5"/>
+  <rect class="acc" x="83" y="144" width="15" height="24" rx="1.5" fill="none" stroke="var(--color-accent, #1d4ed8)" stroke-width="1" opacity="0.5"/>
+
+  <!-- Ground line -->
+  <line class="bdr" x1="14" y1="170" x2="186" y2="170" stroke-width="3"/>
+
+  <!-- SMS text -->
+  <text x="100" y="193" font-family="'Segoe UI',Arial,Helvetica,sans-serif" font-size="18" font-weight="800" fill="var(--color-accent, #1d4ed8)" text-anchor="middle" letter-spacing="4">SMS</text>
+</svg>
