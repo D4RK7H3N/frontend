@@ -13,7 +13,7 @@ export default function GlobalLoadingScreen() {
       setVisible(false)
       return
     }
-    const timer = setTimeout(() => setVisible(true), 150)
+    const timer = setTimeout(() => setVisible(true), 10000)
     return () => clearTimeout(timer)
   }, [isLoading])
 
