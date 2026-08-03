@@ -3,7 +3,7 @@ import PageHeader from '../components/PageHeader'
 import ActionButton from '../components/ActionButton'
 import StatusBadge from '../components/StatusBadge'
 import { Search, Plus, Edit, Trash2, CheckCircle, XCircle, Loader2, X, AlertTriangle, FileText, Check, Eye } from 'lucide-react'
-import { academicAPI, studentsAPI, financeAPI, activitiesAPI } from '../services/api'
+import { academicAPI, assessmentAPI, studentsAPI, financeAPI, activitiesAPI } from '../services/api'
 import StudentPaymentModal from '../components/StudentPaymentModal'
 import PesoSign from '../components/PesoSign'
 
@@ -55,7 +55,7 @@ export default function AssessmentsPage() {
     try {
       const [typesData, assessmentsData, studentsData] = await Promise.all([
         academicAPI.getAssessmentTypes(),
-        academicAPI.getStudentAssessments(),
+        assessmentAPI.getStudentAssessments(),
         studentsAPI.getAll()
       ])
       setAssessmentTypes(typesData.results || typesData || [])
@@ -151,7 +151,7 @@ export default function AssessmentsPage() {
         s.section === parseInt(selectedSectionForEnrollment)
       )
       for (const student of sectionStudents) {
-        await academicAPI.createAssessment({
+        await assessmentAPI.assignAssessment({
           student_id: student.id,
           assessment_type_id: selectedAssessment.assessment_type_id || selectedAssessment.id,
           total_fee: selectedAssessment.total_fee || selectedAssessment.amount || 0,
@@ -274,7 +274,7 @@ export default function AssessmentsPage() {
           if (form.total_fee) payload.total_fee = parseFloat(form.total_fee)
           if (form.notes.trim()) payload.notes = form.notes.trim()
           if (form.assessed_by.trim()) payload.assessed_by = form.assessed_by.trim()
-          await academicAPI.createAssessment(payload)
+          await assessmentAPI.assignAssessment(payload)
           successCount++
         } catch (err) {
           console.error(`Failed to create assessment for student ${student.id}:`, err)
@@ -310,7 +310,7 @@ export default function AssessmentsPage() {
       if (submitGradesForm.notes.trim()) {
         payload.notes = submitGradesForm.notes.trim()
       }
-      await academicAPI.createAssessment(payload)
+      await assessmentAPI.assignAssessment(payload)
       closeSubmitGrades()
       fetchData()
     } catch (error) {
@@ -327,7 +327,7 @@ export default function AssessmentsPage() {
     if (!window.confirm('Are you sure you want to delete this assessment?')) return
     setDeleting(true)
     try {
-      await academicAPI.deleteAssessment(id)
+      await assessmentAPI.deleteAssessment(id)
       fetchData()
     } catch (error) {
       console.error('Failed to delete assessment:', error)
