@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="School Management System" />
+    <title>School Management System</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #f9fafb;
+        font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+        color: #374151;
+        overflow: hidden;
+      }
+      #root {
+        height: 100%;
+      }
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        background: #f9fafb;
+        z-index: 9999;
+        transition: opacity 250ms ease;
+      }
+      #initial-loader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .il-spinner {
+        width: 44px;
+        height: 44px;
+        border: 4px solid #e5e7eb;
+        border-top-color: #3b82f6;
+        border-radius: 50%;
+        animation: il-spin 800ms linear infinite;
+      }
+      @keyframes il-spin {
+        to { transform: rotate(360deg); }
+      }
+      .il-text {
+        font-size: 14px;
+        font-weight: 500;
+        color: #6b7280;
+        letter-spacing: 0.3px;
+      }
+      .il-brand {
+        font-size: 11px;
+        font-weight: 700;
+        color: #9ca3af;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="initial-loader">
+      <div class="il-spinner"></div>
+      <div class="il-text">Loading School Management System</div>
+      <div class="il-brand">SMS</div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
+    <script>
+      (function() {
+        function hideLoader() {
+          var el = document.getElementById('initial-loader');
+          if (!el) return;
+          el.classList.add('fade-out');
+          setTimeout(function() { if (el && el.parentNode) el.parentNode.removeChild(el); }, 300);
+        }
+        window.addEventListener('app-ready', hideLoader);
+        var observer = new MutationObserver(function() {
+          var root = document.getElementById('root');
+          if (root && root.children.length > 0) hideLoader();
+        });
+        observer.observe(document.getElementById('root'), { childList: true, subtree: false });
+        setTimeout(hideLoader, 8000);
+      })();
+    </script>
+  </body>
+</html>

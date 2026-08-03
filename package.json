@@ -1,0 +1,82 @@
+{
+  "name": "school-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron/main.js",
+  "homepage": "./",
+  "description": "A complete School Management System",
+  "author": {
+    "name": "School Management System",
+    "email": "noreply@schoolms.local"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run gen-icons && vite build",
+    "preview": "vite preview",
+    "electron": "electron .",
+    "start": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "build:win": "npm run build && electron-builder --win --x64 --ia32",
+    "build:win:x64": "npm run build && electron-builder --win --x64",
+    "build:win:x86": "npm run build && electron-builder --win --ia32",
+    "dist": "npm run build && electron-builder --win",
+    "pack": "electron-builder --dir",
+    "gen-icons": "node scripts/generate-icons.cjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.263.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2",
+    "react-to-print": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.0.0",
+    "electron": "^42.6.0",
+    "electron-builder": "^26.15.3",
+    "postcss": "^8.4.24",
+    "sharp": "^0.35.2",
+    "tailwindcss": "^3.3.2",
+    "vite": "^8.0.13",
+    "wait-on": "^7.0.0"
+  },
+  "build": {
+    "appId": "com.sms.schoolmanagementsystem",
+    "productName": "School Management System",
+    "files": [
+      "dist/index.html",
+      "dist/assets/**/*",
+      "electron/main.js",
+      "electron/preload.js",
+      "electron/splash.html",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "forceCodeSigning": false,
+      "requestedExecutionLevel": "asInvoker",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SMS"
+    }
+  }
+}

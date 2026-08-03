@@ -1,0 +1,21 @@
+﻿Copyright © 2026 School Management System
+
+All rights reserved.
+
+This software is the proprietary property of School Management System
+("SCCI") and is made available under a non-exclusive, non-transferable
+license for internal use only.
+
+Redistribution and use in source and binary forms, with or without
+modification, are strictly prohibited without prior written permission
+from SCCI.
+
+Disclaimer:
+This software is provided "AS IS" without warranty of any kind, express
+or implied, including but not limited to the warranties of merchantability,
+fitness for a particular purpose and non-infringement.
+
+IN NO EVENT SHALL SCCI BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.

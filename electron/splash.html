@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Management System - Loading</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-app-region: no-drag;
+    }
+
+    body {
+      background: linear-gradient(160deg, #0f2044 0%, #1a3a5c 50%, #0d2137 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .splash-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* === OFFICIAL SEAL === */
+    .seal-wrapper {
+      width: 110px;
+      height: 110px;
+      margin-bottom: 18px;
+      position: relative;
+      filter: drop-shadow(0 0 12px rgba(201,168,76,0.3));
+    }
+
+    .seal-svg {
+      width: 110px;
+      height: 110px;
+    }
+
+    /* === TEXT BELOW SEAL === */
+    .system-title {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: -0.3px;
+      margin-bottom: 5px;
+    }
+
+    .system-subtitle {
+      color: #c9a84c;
+      font-size: 11px;
+      font-weight: 400;
+      text-align: center;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    /* === PROGRESS BAR === */
+    .progress-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .progress-track {
+      width: 260px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #c9a84c, #f0d080, #c9a84c);
+      border-radius: 9999px;
+      animation: fillBar 10s linear forwards;
+    }
+
+    @keyframes fillBar {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    .status-text {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      height: 16px;
+      text-align: center;
+      transition: opacity 0.3s ease;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+
+    .footer-left {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 9px;
+      font-weight: 400;
+    }
+
+    .footer-center {
+      color: #c9a84c;
+      font-size: 9px;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .footer-right {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 9px;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+  <div class="splash-container">
+
+    <!-- Official Seal SVG -->
+    <div class="seal-wrapper">
+      <svg class="seal-svg" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#c9a84c;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#f0d080;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#c9a84c;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+
+        <!-- Outer ring - gold double border -->
+        <circle cx="55" cy="55" r="53" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+        <circle cx="55" cy="55" r="50" fill="none" stroke="url(#goldGrad)" stroke-width="0.8"/>
+
+        <!-- Inner seal background -->
+        <circle cx="55" cy="55" r="49" fill="#0f2044" />
+
+        <!-- Top curved text: SCHOOL MANAGEMENT SYSTEM -->
+        <path id="topCurve" d="M 10,55 A 45,45 0 0,1 100,55" fill="none"/>
+        <text font-family="Segoe UI, Arial, sans-serif" font-size="7.5" font-weight="700" fill="#c9a84c" letter-spacing="1">
+          <textPath href="#topCurve" startOffset="50%" text-anchor="middle">
+            SCHOOL MANAGEMENT SYSTEM
+          </textPath>
+        </text>
+
+        <!-- Bottom curved text: EST. 2026 -->
+        <path id="bottomCurve" d="M 14,55 A 41,41 0 0,0 96,55" fill="none"/>
+        <text font-family="Segoe UI, Arial, sans-serif" font-size="6" font-weight="400" fill="#c9a84c" letter-spacing="0.5">
+          <textPath href="#bottomCurve" startOffset="50%" text-anchor="middle">
+            EST. 2026
+          </textPath>
+        </text>
+
+        <!-- Inner circle border -->
+        <circle cx="55" cy="55" r="38" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+
+        <!-- Graduation Cap in center -->
+        <g transform="translate(55, 58)" opacity="0.95">
+          <!-- Cap base (mortarboard) -->
+          <polygon points="0,-18 -22,-6 -22,0 0,12 22,0 22,-6" fill="#c9a84c"/>
+          <!-- Cap board top -->
+          <polygon points="0,-18 -20,-6 0,-2 20,-6" fill="#f0d080"/>
+          <!-- Cap skull cap part -->
+          <path d="M-18,-2 L-18,2 Q-18,6 -10,6 L-10,4 Q-10,2 -14,1 L-14,2 L-18,2" fill="#c9a84c"/>
+          <!-- Button on top -->
+          <circle cx="0" cy="-18" r="2.5" fill="#f0d080"/>
+          <!-- Tassel -->
+          <line x1="20" y1="-6" x2="26" y2="2" stroke="#c9a84c" stroke-width="1.5"/>
+          <circle cx="26" cy="5" r="2" fill="#c9a84c"/>
+          <circle cx="26" cy="5" r="1" fill="#f0d080"/>
+        </g>
+
+        <!-- 4-pointed star decorations left and right -->
+        <g fill="#c9a84c" opacity="0.7">
+          <!-- Left star -->
+          <polygon points="8,55 10,52 12,55 10,58"/>
+          <!-- Right star -->
+          <polygon points="98,55 100,52 102,55 100,58"/>
+        </g>
+
+        <!-- Subtle inner glow ring -->
+        <circle cx="55" cy="55" r="47" fill="none" stroke="#c9a84c" stroke-width="0.3" opacity="0.2"/>
+      </svg>
+    </div>
+
+    <!-- System Title -->
+    <p class="system-title">School Management System</p>
+    <p class="system-subtitle">Integrated Academic & Financial Platform</p>
+
+    <!-- Progress Bar -->
+    <div class="progress-section">
+      <div class="progress-track">
+        <div class="progress-fill"></div>
+      </div>
+      <div class="status-text" id="statusText">Initializing system...</div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-left">v1.0.0</span>
+    <span class="footer-center">Developed by DarkZhen</span>
+    <span class="footer-right">&copy; 2026 SMS</span>
+  </div>
+
+  <script>
+    const messages = [
+      "Initializing system...",
+      "Loading configurations...",
+      "Connecting to database...",
+      "Loading student records...",
+      "Preparing financial data...",
+      "Almost ready..."
+    ];
+
+    let msgIndex = 0;
+    const statusEl = document.getElementById('statusText');
+
+    setInterval(() => {
+      msgIndex = (msgIndex + 1) % messages.length;
+      statusEl.textContent = messages[msgIndex];
+    }, 1500);
+  </script>
+</body>
+</html>

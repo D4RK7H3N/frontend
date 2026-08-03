@@ -1,0 +1,32 @@
+﻿appId: com.sms.schoolmanagementsystem
+productName: School Management System
+copyright: "Copyright © 2026 School Management System"
+
+directories:
+  buildResources: build
+  output: release
+
+files:
+  - dist/**/*
+  - electron/**/*
+  - node_modules/**/*
+  - package.json
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+        - ia32
+  icon: build/icon.ico
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  allowElevation: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: "SMS"
+  unicode: true
+
+publish: null
