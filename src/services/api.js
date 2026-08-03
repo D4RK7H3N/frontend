@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { startRequestLoading, endRequestLoading } from '../context/LoadingContext'
 
 const BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '')
 
@@ -34,6 +35,7 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
+    startRequestLoading()
     const token = storage.get('authToken')
     if (token) {
       config.headers.Authorization = `Token ${token}`
@@ -44,8 +46,12 @@ apiClient.interceptors.request.use(
 )
 
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    endRequestLoading()
+    return response
+  },
   (error) => {
+    endRequestLoading()
     if (!error.response) {
       return Promise.reject(new Error('Cannot connect to server.'))
     }
